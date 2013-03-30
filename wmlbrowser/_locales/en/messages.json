@@ -1,0 +1,12 @@
+{
+	"ext_name": {
+		"message": "wmlbrowser"
+	},
+	"ext_desc": {
+		"message": "With this extension, you can browse the WML document in Chrome."
+	},
+	"wml_select": {
+		"message": "== Please Select... =="
+	}
+
+}

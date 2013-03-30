@@ -1,0 +1,11 @@
+{
+	"ext_name": {
+		"message": "wml 浏览器"
+	},
+	"ext_desc": {
+		"message": "在 Chrome 中浏览 WML 格式的网页。"
+	},
+	"wml_select": {
+		"message": "== 请选择... =="
+	}
+}
