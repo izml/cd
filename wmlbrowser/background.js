@@ -10,7 +10,7 @@ chrome.webRequest.onHeadersReceived.addListener(
 					wmls[d.tabId]=1;
 				//	sessionStorage['wmls']=JSON.stringify(wmls);
 					if(type.indexOf('charset=')<0){
-						rs[i].value='text/vnd.wap.wml;charset=utf-8'
+						rs[i].value='text/vnd.wap.wml;charset=utf-8';
 						return {responseHeaders: rs};
 					}
 				}
@@ -23,12 +23,12 @@ chrome.webRequest.onHeadersReceived.addListener(
 	// extraInfoSpec
 	["blocking","responseHeaders"]
 );
-chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
+chrome.extension.onMessage.addListener(function(message,sender,sendResponse){
 	if(message.checkWML){
-	//	var tid=sender.tab.id;
-		if(wmls[sender.tab.id]){
+		var tid=sender.tab.id;
+		if(wmls[tid]){
 			sendResponse({notWML:false});
-			delete wmls[sender.tab.id];
+			delete wmls[tid];
 		//	sessionStorage['wmls']=JSON.stringify(wmls);
 		} else sendResponse({notWML:true});
 	}
@@ -37,7 +37,7 @@ chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
 chrome.webRequest.onBeforeSendHeaders.addListener(
 	function(d){
 		var req=d.requestHeaders
-		for (var i=req.length-1; i>=0; i--) {
+		for(var i=req.length-1; i>=0; i--){
 			if(req[i].name=='User-Agent'){
 				req[i].value='Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0; HTC; Titan)';
 				break;
